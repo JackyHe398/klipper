@@ -163,6 +163,12 @@
                   </a>
                 </li>
                 
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
             </ul>
           </div>
         </div>
@@ -820,6 +826,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exclude_object" class="md-nav__link">
+    [exclude_object]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -843,6 +856,13 @@
           <li class="md-nav__item">
   <a href="#adxl345" class="md-nav__link">
     [adxl345]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpu9250" class="md-nav__link">
+    [mpu9250]
   </a>
   
 </li>
@@ -911,6 +931,13 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart_effector" class="md-nav__link">
+    [smart_effector]
   </a>
   
 </li>
@@ -1768,14 +1795,14 @@
       
       
         <label class="md-nav__link" for="__nav_7_5">
-          Resonance Compensation
+          共振補償
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+      <nav class="md-nav" aria-label="共振補償" data-md-level="2">
         <label class="md-nav__title" for="__nav_7_5">
           <span class="md-nav__icon md-icon"></span>
-          Resonance Compensation
+          共振補償
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -1953,6 +1980,20 @@
     <li class="md-nav__item">
       <a href="Skew_Correction.html" class="md-nav__link">
         偏斜校正
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
       </a>
     </li>
   
@@ -2295,6 +2336,21 @@
           
         </ul>
       </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
     </li>
   
 
@@ -2677,6 +2733,13 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#exclude_object" class="md-nav__link">
+    [exclude_object]
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2700,6 +2763,13 @@
           <li class="md-nav__item">
   <a href="#adxl345" class="md-nav__link">
     [adxl345]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mpu9250" class="md-nav__link">
+    [mpu9250]
   </a>
   
 </li>
@@ -2768,6 +2838,13 @@
           <li class="md-nav__item">
   <a href="#bltouch" class="md-nav__link">
     [bltouch]
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#smart_effector" class="md-nav__link">
+    [smart_effector]
   </a>
   
 </li>
@@ -4282,10 +4359,10 @@ max_temp:
 <div class="highlight"><pre><span></span><code>[screws_tilt_adjust]
 #screw1:
 #   The (X, Y) coordinate of the first bed leveling screw. This is a
-#   position to command the nozzle to that is directly above the bed
-#   screw (or as close as possible while still being above the bed).
-#   This is the base screw used in calculations. This parameter must
-#   be provided.
+#   position to command the nozzle to so that the probe is directly
+#   above the bed screw (or as close as possible while still being
+#   above the bed). This is the base screw used in calculations. This
+#   parameter must be provided.
 #screw1_name:
 #   An arbitrary name for the given screw. This name is displayed when
 #   the helper script runs. The default is to use a name based upon
@@ -4408,9 +4485,9 @@ home_xy_position:
 #   than z_hop, then this will lift the head to a height of z_hop. If
 #   the Z axis is not already homed the head is lifted by z_hop.
 #   The default is to not implement Z hop.
-#z_hop_speed: 20.0
+#z_hop_speed: 15.0
 #   Speed (in mm/s) at which the Z axis is lifted prior to homing. The
-#   default is 20mm/s.
+#   default is 15 mm/s.
 #move_to_previous: False
 #   When set to True, the X and Y axes are reset to their previous
 #   positions after Z axis homing. The default is False.
@@ -4527,11 +4604,13 @@ filename:
 <p>如果主機的速度不足以很好地執行 OctoPrint，虛擬 SD 卡可能有幫助。它允許 Klipper 主機軟體使用標準的 SD 卡G程式碼命令（例如，M24）直接列印儲存在主機目錄中的 gcode 檔案。</p>
 <div class="highlight"><pre><span></span><code>[virtual_sdcard]
 path:
-# 要查找的主機本地目錄的路徑
-# g 代碼文件。這是一個只讀目錄（sdcard 文件寫入
-# 不支持）。有人可能會將此指向 OctoPrint 的上傳
-# 目錄（通常是 ~/.octoprint/uploads/ ）。該參數必須
-＃   提供。
+#   The path of the local directory on the host machine to look for
+#   g-code files. This is a read-only directory (sdcard file writes
+#   are not supported). One may point this to OctoPrint&#39;s upload
+#   directory (generally ~/.octoprint/uploads/ ). This parameter must
+#   be provided.
+#on_error_gcode:
+#   A list of G-Code commands to execute when an error is reported.
 </code></pre></div>
 
 <h3 id="sdcard_loop">[sdcard_loop]<a class="headerlink" href="#sdcard_loop" title="Permanent link">&para;</a></h3>
@@ -4599,6 +4678,12 @@ path:
 # 覆蓋“default_type”。
 </code></pre></div>
 
+<h3 id="exclude_object">[exclude_object]<a class="headerlink" href="#exclude_object" title="Permanent link">&para;</a></h3>
+<p>Enables support to exclude or cancel individual objects during the printing process.</p>
+<p>See the <a href="Exclude_Object.html">exclude objects guide</a> and <a href="G-Codes.html#excludeobject">command reference</a> for additional information. See the <a href="https://github.com/Klipper3d/klipper/blob/master/config/sample-macros.cfg">sample-macros.cfg</a> file for a Marlin/RepRapFirmware compatible M486 G-Code macro.</p>
+<div class="highlight"><pre><span></span><code>[exclude_object]
+</code></pre></div>
+
 <h2 id="_13">共振補償<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
 <h3 id="input_shaper">[input_shaper]<a class="headerlink" href="#input_shaper" title="Permanent link">&para;</a></h3>
 <p>啟用 <a href="Resonance_Compensation.html">resonance compensation</a>。另請參閱 <a href="G-Codes.html#input_shaper">命令參考</a>。</p>
@@ -4658,6 +4743,20 @@ cs_pin:
 #   共振測量的質量。
 </code></pre></div>
 
+<h3 id="mpu9250">[mpu9250]<a class="headerlink" href="#mpu9250" title="Permanent link">&para;</a></h3>
+<p>Support for mpu9250 and mpu6050 accelerometers (one may define any number of sections with an "mpu9250" prefix).</p>
+<div class="highlight"><pre><span></span><code>[mpu9250 my_accelerometer]
+#i2c_address:
+#   Default is 104 (0x68).
+#i2c_mcu:
+#i2c_bus:
+#i2c_speed: 400000
+#   See the &quot;common I2C settings&quot; section for a description of the
+#   above parameters. The default &quot;i2c_speed&quot; is 400000.
+#axes_map: x, y, z
+#   See the &quot;adxl345&quot; section for information on this parameter.
+</code></pre></div>
+
 <h3 id="resonance_tester">[resonance_tester]<a class="headerlink" href="#resonance_tester" title="Permanent link">&para;</a></h3>
 <p>支持共振測試和自動輸入整形器校準。為了使用該模塊的大部分功能，必須安裝額外的軟件依賴項；有關詳細信息，請參閱 <a href="Measuring_Resonances.html">測量共振</a> 和 <a href="G-Codes.html#resonance_tester">命令參考</a>。有關 <code>max_smoothing</code> 參數及其使用的更多信息，請參閱測量共振指南的 <a href="Measuring_Resonances.html#max-smoothing">Max Smoothing</a> 部分。</p>
 <div class="highlight"><pre><span></span><code>[resonance_tester]
@@ -4688,8 +4787,8 @@ cs_pin:
 #   for more details on using this feature.
 #min_freq: 5
 #   Minimum frequency to test for resonances. The default is 5 Hz.
-#max_freq: 120
-#   Maximum frequency to test for resonances. The default is 120 Hz.
+#max_freq: 133.33
+#   Maximum frequency to test for resonances. The default is 133.33 Hz.
 #accel_per_hz: 75
 #   This parameter is used to determine which acceleration to use to
 #   test a specific frequency: accel = accel_per_hz * freq. Higher the
@@ -4845,6 +4944,53 @@ control_pin:
 #samples_tolerance:
 #samples_tolerance_retries:
 #   See the &quot;probe&quot; section for information on these parameters.
+</code></pre></div>
+
+<h3 id="smart_effector">[smart_effector]<a class="headerlink" href="#smart_effector" title="Permanent link">&para;</a></h3>
+<p>The "Smart Effector" from Duet3d implements a Z probe using a force sensor. One may define this section instead of <code>[probe]</code> to enable the Smart Effector specific features. This also enables <a href="G-Codes.html#smart_effector">runtime commands</a> to adjust the parameters of the Smart Effector at run time.</p>
+<div class="highlight"><pre><span></span><code>[smart_effector]
+pin:
+#   Pin connected to the Smart Effector Z Probe output pin (pin 5). Note that
+#   pullup resistor on the board is generally not required. However, if the
+#   output pin is connected to the board pin with a pullup resistor, that
+#   resistor must be high value (e.g. 10K Ohm or more). Some boards have a low
+#   value pullup resistor on the Z probe input, which will likely result in an
+#   always-triggered probe state. In this case, connect the Smart Effector to
+#   a different pin on the board. This parameter is required.
+#control_pin:
+#   Pin connected to the Smart Effector control input pin (pin 7). If provided,
+#   Smart Effector sensitivity programming commands become available.
+#probe_accel:
+#   If set, limits the acceleration of the probing moves (in mm/sec^2).
+#   A sudden large acceleration at the beginning of the probing move may
+#   cause spurious probe triggering, especially if the hotend is heavy.
+#   To prevent that, it may be necessary to reduce the acceleration of
+#   the probing moves via this parameter.
+#recovery_time: 0.4
+#   A delay between the travel moves and the probing moves in seconds. A fast
+#   travel move prior to probing may result in a spurious probe triggering.
+#   This may cause &#39;Probe triggered prior to movement&#39; errors if no delay
+#   is set. Value 0 disables the recovery delay.
+#   Default value is 0.4.
+#x_offset:
+#y_offset:
+#   Should be left unset (or set to 0).
+z_offset:
+#   Trigger height of the probe. Start with -0.1 (mm), and adjust later using
+#   `PROBE_CALIBRATE` command. This parameter must be provided.
+#speed:
+#   Speed (in mm/s) of the Z axis when probing. It is recommended to start
+#   with the probing speed of 20 mm/s and adjust it as necessary to improve
+#   the accuracy and repeatability of the probe triggering.
+#samples:
+#sample_retract_dist:
+#samples_result:
+#samples_tolerance:
+#samples_tolerance_retries:
+#activate_gcode:
+#deactivate_gcode:
+#deactivate_on_each_sample:
+#   See the &quot;probe&quot; section for more information on the parameters above.
 </code></pre></div>
 
 <h2 id="_16">額外的步進電機和擠出機<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
@@ -5384,32 +5530,43 @@ pin:
 #tachometer_pin:
 #tachometer_ppr:
 #tachometer_poll_interval:
-# 以上參數的說明見“fan”部分。
+#   See the &quot;fan&quot; section for a description of the above parameters.
 #sensor_type:
 #sensor_pin:
 #control:
-#pid_Kp:
-#pid_Ki:
-#pid_Kd:
-#pid_deriv_time:
 #max_delta:
 #min_temp:
 #max_temp:
-# 有關上述參數的說明，請參見“擠出機”部分。
-#target_temp：40.0
-# 將成為目標溫度的溫度（以攝氏度為單位）。
-# 默認為40度。
+#   See the &quot;extruder&quot; section for a description of the above parameters.
+#pid_Kp:
+#pid_Ki:
+#pid_Kd:
+#   The proportional (pid_Kp), integral (pid_Ki), and derivative
+#   (pid_Kd) settings for the PID feedback control system. Klipper
+#   evaluates the PID settings with the following general formula:
+#     fan_pwm = max_power - (Kp*e + Ki*integral(e) - Kd*derivative(e)) / 255
+#   Where &quot;e&quot; is &quot;target_temperature - measured_temperature&quot; and
+#   &quot;fan_pwm&quot; is the requested fan rate with 0.0 being full off and
+#   1.0 being full on. The pid_Kp, pid_Ki, and pid_Kd parameters must
+#   be provided when the PID control algorithm is enabled.
+#pid_deriv_time: 2.0
+#   A time value (in seconds) over which temperature measurements will
+#   be smoothed when using the PID control algorithm. This may reduce
+#   the impact of measurement noise. The default is 2 seconds.
+#target_temp: 40.0
+#   A temperature (in Celsius) that will be the target temperature.
+#   The default is 40 degrees.
 #max_speed: 1.0
-# 風扇轉速（表示為 0.0 到 1.0 之間的值）
-# 將在傳感器溫度超過設定值時設置為。
-# 默認為 1.0。
-#min_speed：0.3
-# 最小風扇速度（表示為 0.0 到 1.0 的值）
-# 風扇將設置為 PID 溫度風扇。
-# 默認為 0.3。
-#gcode_id：
-# 如果設置，溫度將在 M105 查詢中使用
-# 給定 id。默認不通過 M105 上報溫度。
+#   The fan speed (expressed as a value from 0.0 to 1.0) that the fan
+#   will be set to when the sensor temperature exceeds the set value.
+#   The default is 1.0.
+#min_speed: 0.3
+#   The minimum fan speed (expressed as a value from 0.0 to 1.0) that
+#   the fan will be set to for PID temperature fans.
+#   The default is 0.3.
+#gcode_id:
+#   If set, the temperature will be reported in M105 queries using the
+#   given id. The default is to not report the temperature via M105.
 </code></pre></div>
 
 <h3 id="fan_generic">[fan_generic]<a class="headerlink" href="#fan_generic" title="Permanent link">&para;</a></h3>
@@ -5457,7 +5614,7 @@ pin:
 
 <h3 id="neopixel">[neopixel]<a class="headerlink" href="#neopixel" title="Permanent link">&para;</a></h3>
 <p>Neopixel (aka WS2812) LED support (one may define any number of sections with a "neopixel" prefix). See the <a href="G-Codes.html#led">command reference</a> for more information.</p>
-<p>Note that the <a href="RPi_microcontroller.html">linux mcu</a> implementation does not currently support directly connected neopixels.</p>
+<p>Note that the <a href="RPi_microcontroller.html">linux mcu</a> implementation does not currently support directly connected neopixels. The current design using the Linux kernel interface does not allow this scenario because the kernel GPIO interface is not fast enough to provide the required pulse rates.</p>
 <div class="highlight"><pre><span></span><code>[neopixel my_neopixel]
 pin:
 #   The pin connected to the neopixel. This parameter must be
@@ -5468,8 +5625,9 @@ pin:
 #   Neopixel is connected to the pin).
 #color_order: GRB
 #   Set the pixel order required by the LED hardware (using a string
-#   containing the letters R, G, B, W with W optional). The default is
-#   GRB.
+#   containing the letters R, G, B, W with W optional). Alternatively,
+#   this may be a comma separated list of pixel orders - one for each
+#   LED in the chain. The default is GRB.
 #initial_RED: 0.0
 #initial_GREEN: 0.0
 #initial_BLUE: 0.0
@@ -6729,19 +6887,23 @@ cs_pin:
 
 <h3 id="i2c">通用 I2C 設定<a class="headerlink" href="#i2c" title="Permanent link">&para;</a></h3>
 <p>以下參數通常適用於使用 I2C 總線的設備。</p>
+<p>Note that Klipper's current micro-controller support for i2c is generally not tolerant to line noise. Unexpected errors on the i2c wires may result in Klipper raising a run-time error. Klipper's support for error recovery varies between each micro-controller type. It is generally recommended to only use i2c devices that are on the same printed circuit board as the micro-controller.</p>
+<p>Most Klipper micro-controller implementations only support an <code>i2c_speed</code> of 100000. The Klipper "linux" micro-controller supports a 400000 speed, but it must be <a href="RPi_microcontroller.html#optional-enabling-i2c">set in the operating system</a> and the <code>i2c_speed</code> parameter is otherwise ignored. The Klipper "rp2040" micro-controller supports a rate of 400000 via the <code>i2c_speed</code> parameter. All other Klipper micro-controllers use a 100000 rate and ignore the <code>i2c_speed</code> parameter.</p>
 <div class="highlight"><pre><span></span><code>#i2c_address:
-#   裝置的 I2C 地址。必須是一個十進制數字（而不是十六進制）。
-#   預設值取決於裝置的型別。
+#   The i2c address of the device. This must specified as a decimal
+#   number (not in hex). The default depends on the type of device.
 #i2c_mcu:
-#   晶片所連線的微控制器的名稱。
-#   預設為&quot;mcu&quot;。
+#   The name of the micro-controller that the chip is connected to.
+#   The default is &quot;mcu&quot;.
 #i2c_bus:
-# 如果微控制器支援多個 I2C 匯流排，可以指定微控制器的匯流排名稱。
-#   預設值取決於微控制器的型別。
+#   If the micro-controller supports multiple I2C busses then one may
+#   specify the micro-controller bus name here. The default depends on
+#   the type of micro-controller.
 #i2c_speed:
-#   與裝置通訊時使用的I2C速度（Hz）。在某些微控制器上，
-#   該數值無效。
-#   預設值是預設為100000。
+#   The I2C speed (in Hz) to use when communicating with the device.
+#   The Klipper implementation on most micro-controllers is hard-coded
+#   to 100000 and changing this value has no effect. The default is
+#   100000.
 </code></pre></div>
 
               

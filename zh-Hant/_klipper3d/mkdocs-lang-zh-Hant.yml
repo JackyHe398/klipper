@@ -83,6 +83,9 @@ extra:
     - name: 繁體中文
       link: /zh-Hant/
       lang: zh-Hant
+    - name: Magyar
+      link: /hu/
+      lang: hu
     # Alternate language links automatically added here
 
 # Navigation hierarchy (this should mimic the layout of Overview.md)
@@ -107,7 +110,7 @@ nav:
       - Manual_Level.md
       - Bed_Mesh.md
       - Endstop_Phase.md
-    - Resonance Compensation:
+    - 共振補償:
       - Resonance_Compensation.md
       - Measuring_Resonances.md
     - Pressure_Advance.md
@@ -119,6 +122,7 @@ nav:
     - Multi_MCU_Homing.md
     - Slicers.md
     - Skew_Correction.md
+    - Exclude_Object.md
     - Using_PWM_Tools.md
   - Developer Documentation:
     - Code_Overview.md
@@ -140,3 +144,4 @@ nav:
     - CANBUS.md
     - TSL1401CL_Filament_Width_Sensor.md
     - Hall_Filament_Width_Sensor.md
+  - Sponsors.md

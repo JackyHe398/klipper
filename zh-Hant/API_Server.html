@@ -163,6 +163,12 @@
                   </a>
                 </li>
                 
+                <li class="md-select__item">
+                  <a href="/hu/" hreflang="hu" class="md-select__link">
+                    Magyar
+                  </a>
+                </li>
+                
             </ul>
           </div>
         </div>
@@ -620,14 +626,14 @@
       
       
         <label class="md-nav__link" for="__nav_7_5">
-          Resonance Compensation
+          共振補償
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" aria-label="Resonance Compensation" data-md-level="2">
+      <nav class="md-nav" aria-label="共振補償" data-md-level="2">
         <label class="md-nav__title" for="__nav_7_5">
           <span class="md-nav__icon md-icon"></span>
-          Resonance Compensation
+          共振補償
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -805,6 +811,20 @@
     <li class="md-nav__item">
       <a href="Skew_Correction.html" class="md-nav__link">
         偏斜校正
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Exclude_Object.html" class="md-nav__link">
+        Exclude Objects
       </a>
     </li>
   
@@ -1361,6 +1381,21 @@
   
 
     
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="Sponsors.html" class="md-nav__link">
+        Sponsors
+      </a>
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1586,6 +1621,7 @@
 </code></pre></div>
 
 <p>上述操作會使主機建立一個Unix本地套接字。之後，客戶應用程式可以建立一個套接字鏈接，從而給Klipper發送命令。</p>
+<p>See the <a href="https://github.com/Arksine/moonraker">Moonraker</a> project for a popular tool that can forward HTTP requests to Klipper's API Server Unix Domain Socket.</p>
 <h2 id="_1">請求格式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>套接字進出的數據包應使用JSON編碼的字串，並以ASCII字元0x03作為結尾：</p>
 <div class="highlight"><pre><span></span><code>&lt;json_object_1&gt;&lt;0x03&gt;&lt;json_object_2&gt;&lt;0x03&gt;...
